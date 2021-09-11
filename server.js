@@ -9,6 +9,12 @@ const db = require('./models')
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use('/comment', require('./routers/commentRouter'))
+
+app.get('/', (req, res) => {
+    res.json({message: 'The API is Alive!!!'})
+})
+
 app.use((req, res, next) => {
     const err = new Error("");
     err.status = 404;
